@@ -53,8 +53,8 @@ Course Outline
    Then it prompts developer to use near-cli to:
 
    - `near login`
-   - use near-cli to create subaccount and deploy contract to it, update `.env` with new contract address
-   - call the contract's `set_mayor` function to set self as mayor, then refresh the page (to demonstrate common errors/gotchas, initially instructs them to call `set_mayor` with poorly-formed JSON)
+   - use near-cli to create subaccount and deploy contract to it, update `.env` with new contract address. This shows off NEAR's nifty account name system.
+   - call the contract's `set_mayor` function to set self as mayor (to demonstrate common errors/gotchas, initially instructs them to call `set_mayor` with poorly-formed JSON). This shows off NEAR-specific feature allowing contracts to accepts JSON as input.
 
 5. After setting the mayor and refreshing the page, the page now:
 
