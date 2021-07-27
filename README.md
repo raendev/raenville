@@ -35,15 +35,29 @@ Course Outline
 
 3. Webpage is split into two parts, "user" part and "developer" part.
 
-   Developer part explains:
+   #### Developer part
+
+   Explains:
 
    - what just happened (see `2` above)
    - how the project is structured
    - where the source code of this specific content is
 
-   User part prompts user to log in with NEAR. (This should already give people their first a-ha moment: how easy it is to add auth to their app with NEAR. Ideally, the NEAR login process will be simplified, so that even if the web2 crowd drops out after this, they'll still be inspired to reach for NEAR instead of some OAuth solution the next time they want to quickly add authentication to an app.)
+   #### User part
 
-4. After logging in, content changes. Page now explains:
+   Prompts user to log in with NEAR.
+
+   (Doing this should already give people their first a-ha moment: how easy it is to add auth to their app with NEAR. Ideally, the NEAR login process will be simplified, so that even if the web2 crowd drops out after this, they'll still be inspired to reach for NEAR instead of some OAuth solution the next time they want to quickly add authentication to an app.)
+
+4. After logging in, content changes.
+
+   #### User part
+
+   Remains mostly unchanged and minimal, maybe says "Welcome, account-name.testnet"
+
+   #### Developer part
+
+   Explains:
 
    - Look at that, identity as a primitive! With blockchains, the web finally has identity baked into the protocol.
    - More about NEAR Wallet
@@ -58,33 +72,54 @@ Course Outline
 
 5. After setting the mayor and refreshing the page, the page now:
 
-   - user part: shows a special "Howdy, Mayor!" message
-   - developer part: intro to smart contracts & rust-sdk-rs; where to open the contract to see the `set_mayor` function
+   #### User part
+
+   Shows a special "Howdy, Mayor!" message
+
+   #### Developer part
+
+   - intro to smart contracts & rust-sdk-rs; where to open the contract to see the `set_mayor` function
    - going further: modify `set_mayor` to store Mayor's name, install rustup & target wasm-unknown-unknown, compile updated contract, deploy, call updated `set_mayor` function with near-cli, update frontend to show name
 
    Then, to set up the next step:
 
-   - developer part: Has learner create new subaccount & deploy NFT contract to it, then update `.env` with new contract address (might require restarting `yarn start` process)
+   - Has learner create new subaccount & deploy NFT contract to it, then update `.env` with new contract address (might require restarting `yarn start` process)
 
 6. **NFTs**: Mayor can now get started on the first major upgrade to the city's digital infrastructure: replacing paper deeds and filing cabinets with NFTs and distributed ledgers!
 
-   - user part: gives more info on this new NFT-backed deed-management system, has the mayor add a couple properties to get it started, jokes with them that they might want to hire some interns to finish this data-entry step. All entered properties are initially owned by Mayor; page explains TBD plan to verify people's identities/accounts prior to transfering these NFTs to them. Page explains ability to comply with local laws & current real-estate transferrence process by doing something like requiring on-chain transactions to be signed by a title company. Page also explains benefits of using NFTs instead of paper. (Might also be worth getting into privacy considerations, having all property ownership on a public blockchain.)
-   - developer part: Introduces nomicon & NFT standard; points out what simple programs these are, and that they get their whole power through being deployed to a blockchain and being a standard; says where to open the Non-Fungible Token contract code; introduces `near-contract-standards` library.
+   #### User part
+
+   - Has the mayor add a couple properties to get it started (jokes that they might want to hire some interns to finish this data-entry step)
+
+   Other details we may want to explain briefly, with links to read more:
+
+   - All entered properties are initially owned by Mayor
+   - TBD plan to verify people's identities/accounts prior to transfering these NFTs to them
+   - Ability to comply with local laws & current real-estate transferrence process by doing something like requiring on-chain transactions to be signed by a title company
+   - Benefits of using NFTs for this process
+   - Privacy considerations when having all property ownership on a public blockchain – this is in theory similar to the public nature of real estate ownership in the United States
+
+   #### Developer part
+
+   - Introduces nomicon & NFT standard
+   - Points out what simple programs these are, and that they get their whole power through 1. being deployed to a blockchain and 2. being a standard
+   - Says where to open the Non-Fungible Token contract code
+   - Introduces `near-contract-standards` library
 
    Then, to set up the next step:
 
-   - developer part: Has learner create new subaccount & deploy FT contract to it and update `.env` with new contract address (might require restarting `yarn start` process)
+   - Has learner create new subaccount & deploy FT contract to it and update `.env` with new contract address (might require restarting `yarn start` process)
 
 7. **FTs**: New feature unlocked! The page now shows a "Register to vote, earn $RAEN" button
 
-   User part:
+   #### User part
 
    - Explains that RAEN tokens are the city's new local currency, to be minted solely when people register to vote via the new website, and which are already being accepted at many local establishments
    - Has mayor register to vote
      - requires selecting one of the addresses entered as an NFT
      - shows RAEN balance afterward
 
-   Developer part:
+   #### Developer part
 
    - Says where to open the Fungible Token contract, highlights & explains the [cross-contract call](https://docs.near.org/docs/tutorials/contracts/cross-contract-calls) from main contract's `register_voter` function to FT contract's `transfer`
    - Discusses Sybil-resistance challenges around real-world identity verification, especially given the 1000-RAEN incentive to cheat
@@ -92,24 +127,24 @@ Course Outline
 
    Then, to set up the next step:
 
-   - developer part: Has learner create new subaccount & deploy DAO contract to it and update `.env` with new contract address (might require restarting `yarn start` process)
+   - Has learner create new subaccount & deploy DAO contract to it and update `.env` with new contract address (might require restarting `yarn start` process)
 
 8. **DAOs**: All registered voters see a new feature: "Make a proposal" – [DAO](https://whiteboardcrypto.com/what-is-a-dao/) functionality for the city
 
-   User section:
+   #### User part
 
    - Any voter can make proposals, but exact voting mechanics (who is allowed to vote on proposals, how much their votes count, when voting happens) can be decided by the city and can be modified via further proposals over time.
-   - Anyone making proposals can optionally attach RAEN, which will be released to the city treasury only if the proposal is ratified. This allows proposers to "put their money where their mouth is", putting real money on the line to show that they are serious about getting this proposal passed.
+   - Anyone making proposals can optionally attach RAEN, which will be released to the city treasury only if the proposal is ratified. This allows proposers to "put their money where their mouth is", putting real money on the line to show that they are serious about getting this proposal passed, as well as allow them to help fund their proposed project.
 
-   Developer section:
+   #### Developer part
 
    - The "optional RAEN attachment" feature shows off two NEAR-specific features:
      -  Function Call keys don't need to sign every transaction (user can make proposal with familiar web2 experience), but attaching a deposit requires signing via NEAR Wallet.
      - `transfer_call` functionality of FTs: if attaching RAEN, the initial contract call goes to the FT contract's `transfer_call` function, which then makes a cross-contract call to the DAO contract.
-   - Mention ability for contract owner to mint self unlimited RAEN or change votes due to existence of [Full Access](https://docs.near.org/docs/concepts/account#access-keys) keys (another NEAR-specific feature), and how a real-world contract would want to remove all Full Access keys and pay for a rigorous security audit if maintainers want to avoid really bad press.
+   - Mention ability for contract owner to mint self unlimited RAEN or change votes due to existence of [Full Access](https://docs.near.org/docs/concepts/account#access-keys) keys (another NEAR-specific feature), and how a real-world contract would want to remove all Full Access keys and pay for a rigorous security audit if maintainers want to avoid hacks & bad press.
    - Mention that even with all Full Access removed, the contract could still be [updated via a DAO vote](https://sdk-g4yv.onrender.com/upgrading/via-dao-vote).
 
-9. Going further: Introduction to project's [near-sandbox](https://www.npmjs.com/package/near-sandbox) tests, showing that all current functionality has passing tests, but there are failing tests for not-yet-developed features. Self-guided exercise from here: implement these features, make the tests pass! Some feature ideas:
+9. Going further: Introduction to project's [near-sandbox](https://www.npmjs.com/package/near-sandbox) tests, showing that all current functionality has passing tests, but there are failing tests for not-yet-developed features. Self-guided exercise from here: implement new features, make the tests pass! Some feature ideas:
 
    - Rather than just "the Mayor and everyone else", contract also has other roles: city council, block captain, building coordinator
    - These different roles get different voting power on proposals, which is _not_ represented with FTs or NFTs because they're not meant to be sellable assets
