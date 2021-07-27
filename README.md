@@ -79,7 +79,7 @@ Course Outline
    #### Developer part
 
    - intro to smart contracts & rust-sdk-rs; where to open the contract to see the `set_mayor` function
-   - going further: modify `set_mayor` to store Mayor's name, install rustup & target wasm-unknown-unknown, compile updated contract, deploy, call updated `set_mayor` function with near-cli, update frontend to show name
+   - going further: modify `set_mayor` to store Mayor's name, install rustup & target wasm-unknown-unknown (if running locally instead of in Gitpod), compile updated contract, deploy, call updated `set_mayor` function with near-cli, update frontend to show name
 
    Then, to set up the next step:
 
