@@ -1,0 +1,7 @@
+.App {
+  min-height: 100vh;
+  background-image: url(./cityscape.png);
+  background-size: contain;
+  background-position: center bottom;
+  background-repeat: no-repeat;
+}
