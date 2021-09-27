@@ -29,7 +29,7 @@ Course Outline
 2. Run `yarn start`. Behind the scenes, this will:
 
    - deploy contract with `dev-deploy`
-   - add `dev-*` address to `.env`
+   - add `dev-*` address to `.env.local`
    - run `parcel serve`
    - auto-opens browser to app
 

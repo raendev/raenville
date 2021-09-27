@@ -1,0 +1,13 @@
+{
+  "name": "raenville",
+  "description": "Raenville's main contract, built with AssemblyScript",
+  "private": true,
+  "scripts": {
+    "build": "asb",
+    "build:debug": "asb --target debug",
+    "test": "asp --nologo"
+  },
+  "devDependencies": {
+    "near-sdk-as": "3.1.0"
+  }
+}
