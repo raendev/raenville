@@ -135,7 +135,7 @@ html {
   font-weight: var(--fw-regular);
 }
 
-body {
+#root {
   min-height: 100vh;
   display: flex;
   flex-direction: column;
